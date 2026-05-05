@@ -109,7 +109,7 @@
        BUTTONS
     ====================================== */
     .btn {
-      display: inline-flex; align-items: center; gap: 10px;
+      display: inline-flex; align-items: center; gap: 10px;justify-content: center; 
       font-family: var(--ff-ui); font-size: 11.5px; font-weight: 500;
       letter-spacing: 2px; text-transform: uppercase;
       padding: 17px 38px; border-radius: 1px;
@@ -215,7 +215,7 @@
       position: absolute; inset: 0; z-index: 0;
     }
     .hero-bg img {
-      width: 100%; height: 100%; object-fit: cover;
+      width: 100%; height: 100%; object-fit: cover;object-position: top;
       transform: scale(1.04);
       animation: zoomOut 14s ease forwards;
     }
@@ -1152,26 +1152,18 @@
 <section id="bairro" class="sec">
   <div class="wrap">
     <div class="bairro-grid">
+      <!-- COLUNA 1: TEXTO -->
       <div class="rl">
-        <span class="eyebrow">O Bairro</span>
-        <h2 class="title" style="color:var(--white)">O Alto de São João<br>está a mudar.<br><em>Faça parte disso.</em></h2>
-        <p class="bairro-body">
-          Situado num dos pontos mais elevados e estratégicos da capital, o Alto de São João emerge hoje como um dos segredos mais bem guardados de Lisboa. Um bairro que narra a história da cidade através da sua arquitetura e topografia, oferecendo uma experiência de vida que une a serenidade residencial à pulsão criativa da metrópole moderna.
-        </p>
-        <p class="bairro-body2">
-          Historicamente conhecido pela sua importância cultural e pela proximidade ao Tejo, o Alto de São João conserva a alma da Lisboa autêntica. As suas ruas ecoam a tradição dos bairros vizinhos como a Graça e a Penha de França, mas com uma amplitude e uma luminosidade próprias de quem observa a cidade de cima.
-        </p>
-        <div class="rr">
+        <span class="eyebrow">O Bairro</span> <h2 class="title" style="color:var(--white)">O Alto de São João<br>está a mudar.<br><em>Faça parte disso.</em></h2> <p class="bairro-body"> Situado num dos pontos mais elevados e estratégicos da capital, o Alto de São João emerge hoje como um dos segredos mais bem guardados de Lisboa. Um bairro que narra a história da cidade através da sua arquitetura e topografia, oferecendo uma experiência de vida que une a serenidade residencial à pulsão criativa da metrópole moderna. </p> <p class="bairro-body2"> Historicamente conhecido pela sua importância cultural e pela proximidade ao Tejo, o Alto de São João conserva a alma da Lisboa autêntica. As suas ruas ecoam a tradição dos bairros vizinhos como a Graça e a Penha de França, mas com uma amplitude e uma luminosidade próprias de quem observa a cidade de cima. </p>
+      </div>
+      <!-- COLUNA 2: IMAGEM -->
+      <div class="rr">
         <img
           class="bairro-img"
-          src="https://static.wixstatic.com/media/5152f0_20c9d69341034fed889cb125724cbf60~mv2.png/v1/crop/x_703,y_0,w_946,h_676/fill/w_700,h_500,al_c,q_85,enc_avif,quality_auto/5152f0_20c9d69341034fed889cb125724cbf60~mv2.png"
+          src="https://static.wixstatic.com/media/5152f0_20c9d69341034fed889cb125724cbf60~mv2.png"
           alt="Alto de São João, Lisboa"
         />
-        <div style="margin-top:24px;padding:28px;border:1px solid rgba(201,169,110,.18);border-radius:1px;">
-          <p style="font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;">A vanguarda da modernização</p>
-          <p style="font-family:var(--ff-display);font-size:22px;font-weight:300;color:rgba(255,255,255,.75);line-height:1.5;font-style:italic;">
-            "Antigos edifícios dão lugar a projetos de design contemporâneo, atraindo uma nova geração de residentes, artistas e empreendedores."
-          </p>
+        <div style="margin-top:24px;padding:28px;border:1px solid rgba(201,169,110,.18);border-radius:1px;"> <p style="font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;">A vanguarda da modernização</p> <p style="font-family:var(--ff-display);font-size:22px;font-weight:300;color:rgba(255,255,255,.75);line-height:1.5;font-style:italic;"> "Antigos edifícios dão lugar a projetos de design contemporâneo, atraindo uma nova geração de residentes, artistas e empreendedores." </p>
         </div>
       </div>
     </div>
