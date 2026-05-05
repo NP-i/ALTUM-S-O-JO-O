@@ -208,14 +208,14 @@
        HERO
     ====================================== */
     #hero {
-      position: relative; height: 100vh; min-height: 700px;
+      position: relative; height: 100vh; min-height: 600px;
       display: flex; align-items: center; overflow: hidden;
     }
     .hero-bg {
-      position: absolute; inset: 0; z-index: 0;
+      position: absolute; inset: 0; z-index: 0;overflow: hidden;
     }
     .hero-bg img {
-      width: 100%; height: 100%; object-fit: cover;object-position: top;
+      width: 100%; height: 145%; object-fit: cover;object-position: top; transform: translateY(-10%);
       transform: scale(1.04);
       animation: zoomOut 14s ease forwards;
     }
@@ -320,11 +320,11 @@
     ====================================== */
     #sobre { background: var(--beige); }
     .sobre-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 88px; align-items: center;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 88px; align-items: flex-start;
     }
-    .sobre-imgs { position: relative; }
+    .sobre-imgs { position: relative; height: 100%;}
     .sobre-main {
-      width: 100%; aspect-ratio: 3/4; object-fit: cover;
+      width: 100%; aspect-ratio: 3/4; object-fit: cover;height: 100%;
       border-radius: 1px; box-shadow: var(--sh-lg);
     }
     .sobre-badge {
@@ -355,7 +355,7 @@
     ====================================== */
     #diferenciais { background: var(--charcoal-2); }
     .diff-head {
-      display: flex; justify-content: space-between; align-items: flex-end;
+      display: flex; justify-content: flex-start; align-items: flex-start;
       margin-bottom: 72px; gap: 40px;
     }
     .diff-head .title { color: var(--white); }
@@ -535,8 +535,8 @@
     ====================================== */
     #localizacao { background: var(--cream); }
     .loc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
-    .loc-map { border-radius: 1px; overflow: hidden; box-shadow: var(--sh); }
-    .loc-map iframe { display: block; width: 100%; height: 420px; border: none; }
+    .loc-map { border-radius: 1px; overflow: hidden; box-shadow: var(--sh);height: 100%; }
+    .loc-map iframe { display: block; width: 100%; height: 420px; border: none; height: 100%;}
     .loc-addr {
       font-size: 13px; color: var(--muted); margin-top: 12px;
       display: flex; align-items: center; gap: 6px;
@@ -859,7 +859,7 @@
   <div class="wrap">
     <div class="sobre-grid">
       <!-- IMAGEM -->
-      <div class="rl">
+      <div class="rl" style="height: 100%;">
         <div class="sobre-imgs">
           <img
             class="sobre-main"
@@ -891,7 +891,7 @@
                                                   </ul>
 
         <p style="font-size:15px;color:var(--mid);line-height:1.8;margin-bottom:36px;">
-          O edifício garante comodidade e acessibilidade. A implantação oferece ventilação cruzada e um privilégio raro: vistas amplas que,em determinados pontos,se estendem até ao Tejo. Um enquadramento que valoriza não só o imóvel, mas a experiência de viver.
+          O edifício garante comodidade e acessibilidade. A implantação oferece ventilação cruzada e um privilégio raro: vistas amplas que, em determinados pontos, se estendem até ao Tejo. Um enquadramento que valoriza não só o imóvel, mas a experiência de viver.
         </p>
 
         <a href="#contato" class="btn btn-gold">Fale com um Gestor NP-i</a>
@@ -1102,7 +1102,7 @@
       <!-- Fachada antiga (antes) -->
       <div class="gi r d2" onclick="lb('https://static.wixstatic.com/media/5152f0_f5f71c3a539a4f85b3fc9a1e4a3ce4bc~mv2.png/v1/fit/w_800,h_1000,q_90,enc_avif,quality_auto/5152f0_f5f71c3a539a4f85b3fc9a1e4a3ce4bc~mv2.png')">
         <div class="gi-inner">
-          <img src="https://static.wixstatic.com/media/5152f0_f5f71c3a539a4f85b3fc9a1e4a3ce4bc~mv2.png/v1/fit/w_500,h_625,q_85,enc_avif,quality_auto/5152f0_f5f71c3a539a4f85b3fc9a1e4a3ce4bc~mv2.png" alt="Fachada anterior" />
+          <img src="https://static.wixstatic.com/media/5152f0_f5f71c3a539a4f85b3fc9a1e4a3ce4bc~mv2.png/v1/fit/w_500,h_625,q_85,enc_avif,quality_auto/5152f0_f5f71c3a539a4f85b3fc9a1e4a3ce4bc~mv2.png" alt="Fachada anterior" style="height: 115%;" />
           <div class="gi-ov"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
         </div>
       </div>
@@ -1180,7 +1180,7 @@
       <h2 class="title">No coração<br>de <em>Lisboa.</em></h2>
     </div>
     <div class="loc-grid">
-      <div class="rl">
+      <div class="rl" style="height: 100%;">
         <div class="loc-map">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3111.58!2d-9.12800!3d38.72650!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd1932f3b9cded01%3A0x0!2sParada+do+Alto+de+S%C3%A3o+Jo%C3%A3o+8%2C+1170-005+Lisboa!5e0!3m2!1spt!2spt!4v1700000000001!5m2!1spt!2spt"
