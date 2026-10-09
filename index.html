@@ -750,6 +750,201 @@
       .tipo-specs { grid-template-columns: 1fr; }
       .gal-head { flex-direction: column; align-items: flex-start; gap: 20px; }
     }
+/* ===== OPEN HOUSE (banner) ===== */
+
+  /* ---------- Secção de destaque ---------- */
+  #open-house {
+    position: relative; overflow: hidden;
+    background: var(--charcoal); color: var(--white);
+    min-height: 640px; display: flex; align-items: center;
+    padding: 120px 0;
+  }
+  .oh-bg { position: absolute; inset: 0; z-index: 0; }
+  .oh-bg img {
+    width: 100%; height: 100%; object-fit: cover; object-position: center 40%;
+    transform: scale(1.06);
+    transition: transform 1.6s var(--ease);
+  }
+  #open-house:hover .oh-bg img { transform: scale(1); }
+  .oh-overlay {
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(110deg,
+      rgba(35,34,32,.94) 0%,
+      rgba(35,34,32,.78) 50%,
+      rgba(35,34,32,.45) 100%);
+  }
+  .oh-overlay::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 200px;
+    background: linear-gradient(to bottom, var(--charcoal), transparent);
+  }
+  .oh-overlay::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 200px;
+    background: linear-gradient(to top, var(--charcoal), transparent);
+  }
+  /* linha dourada vertical, como o scroll-hint do hero */
+  .oh-line {
+    position: absolute; top: 0; left: 50%; z-index: 2; width: 1px; height: 120px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+  }
+
+  .oh-inner { position: relative; z-index: 2; display: grid; grid-template-columns: 1.15fr .85fr; gap: 72px; align-items: center; }
+
+  .oh-logo { height: 38px; width: auto; filter: brightness(0) invert(1); opacity: .85; margin-bottom: 32px; display: block; }
+
+  .oh-tag {
+    display: inline-flex; align-items: center; gap: 10px;
+    border: 1px solid rgba(201,169,110,.35); background: rgba(201,169,110,.08);
+    color: var(--gold-lt); font-family: var(--ff-ui);
+    font-size: 10.5px; font-weight: 500; letter-spacing: 2.5px; text-transform: uppercase;
+    padding: 9px 18px; border-radius: 1px; margin-bottom: 28px;
+  }
+  .oh-tag-dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; animation: ohBlink 2.2s ease infinite; }
+  @keyframes ohBlink { 0%,100% { opacity: 1; box-shadow: 0 0 0 0 rgba(201,169,110,.6); } 50% { opacity: .7; box-shadow: 0 0 0 7px rgba(201,169,110,0); } }
+
+  .oh-title {
+    font-family: var(--ff-display);
+    font-size: clamp(60px, 8.5vw, 124px);
+    font-weight: 300; line-height: .93; letter-spacing: -2px;
+    color: var(--white); margin: 0 0 14px;
+  }
+  .oh-title em { font-style: italic; color: var(--gold-lt); }
+  .oh-sub {
+    font-family: var(--ff-display); font-size: clamp(15px, 1.8vw, 22px); font-weight: 300;
+    letter-spacing: 8px; text-transform: uppercase; color: rgba(255,255,255,.45); margin: 0 0 30px;
+  }
+  .oh-desc { font-family: var(--ff-ui); font-size: 16.5px; line-height: 1.8; color: rgba(255,255,255,.65); max-width: 500px; margin: 0 0 40px; }
+
+  .oh-facts { display: flex; flex-wrap: wrap; gap: 0 44px; margin-bottom: 44px; }
+  .oh-fact { display: flex; flex-direction: column; gap: 6px; padding: 18px 0; border-top: 1px solid rgba(201,169,110,.25); min-width: 150px; }
+  .oh-fact-k { font-family: var(--ff-ui); font-size: 10.5px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); }
+  .oh-fact-v { font-family: var(--ff-display); font-size: 30px; font-weight: 300; line-height: 1.1; color: var(--white); }
+  .oh-fact-v small { font-family: var(--ff-ui); font-size: 13px; color: rgba(255,255,255,.55); display: block; margin-top: 4px; letter-spacing: .3px; }
+
+  .oh-actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+  .btn-wa { background: var(--gold); color: var(--white); animation: ohGlow 2.8s ease infinite; }
+  .btn-wa:hover { background: var(--gold-dk); transform: translateY(-2px); animation: none; box-shadow: 0 10px 30px rgba(201,169,110,.35); }
+  @keyframes ohGlow { 0%,100% { box-shadow: 0 6px 24px rgba(201,169,110,.25); } 50% { box-shadow: 0 10px 38px rgba(201,169,110,.55); } }
+  .btn-outline-light { border: 1px solid rgba(255,255,255,.35); color: var(--white); background: transparent; cursor: pointer; }
+
+  /* ---------- Contagem decrescente ---------- */
+  .oh-count {
+    position: relative; padding: 48px 44px 40px;
+    border: 1px solid rgba(201,169,110,.35); background: rgba(35,34,32,.55);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-radius: 1px;
+  }
+  .oh-count::before, .oh-count::after {
+    content: ''; position: absolute; width: 18px; height: 18px; border-color: var(--gold); border-style: solid;
+  }
+  .oh-count::before { top: -1px; left: -1px; border-width: 1px 0 0 1px; }
+  .oh-count::after  { bottom: -1px; right: -1px; border-width: 0 1px 1px 0; }
+  .oh-count-k { font-family: var(--ff-ui); font-size: 10.5px; letter-spacing: 3.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; }
+  .oh-count-k::before { content: '—  '; color: var(--gold-lt); letter-spacing: 0; }
+  .oh-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .oh-cell { text-align: center; padding: 14px 4px; border-right: 1px solid rgba(201,169,110,.18); }
+  .oh-cell:last-child { border-right: 0; }
+  .oh-num { font-family: var(--ff-display); font-size: clamp(44px, 4.6vw, 66px); font-weight: 300; line-height: 1; color: var(--gold-lt); font-variant-numeric: tabular-nums; transition: transform .25s var(--ease), opacity .25s; }
+  .oh-num.tick { transform: translateY(-6px); opacity: .55; }
+  .oh-lbl { font-family: var(--ff-ui); font-size: 9.5px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,.45); margin-top: 10px; }
+  .oh-live { display: none; text-align: center; font-family: var(--ff-display); font-size: 34px; font-weight: 300; color: var(--gold-lt); padding: 18px 0; }
+  .oh-live em { font-style: italic; }
+  .oh-count.live .oh-grid { display: none; }
+  .oh-count.live .oh-live { display: block; }
+  .oh-count-foot { margin-top: 26px; padding-top: 20px; border-top: 1px solid rgba(201,169,110,.18); font-family: var(--ff-ui); font-size: 13px; line-height: 1.7; color: rgba(255,255,255,.55); }
+  .oh-count-foot a { color: var(--gold-lt); text-decoration: none; }
+  .oh-count-foot a:hover { color: var(--white); }
+    /* ---------- Convite de entrada (ecrã inteiro) ---------- */
+  .oh-gate {
+    position: fixed; inset: 0; z-index: 2000;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(35,34,32,.72); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    opacity: 0; pointer-events: none; transition: opacity .6s ease;
+  }
+  .oh-gate.open { opacity: 1; pointer-events: auto; }
+  .oh-card {
+    position: relative; width: min(1040px, calc(100% - 40px)); max-height: calc(100% - 40px); overflow: auto;
+    display: grid; grid-template-columns: 1fr 1fr;
+    background: var(--charcoal); border: 1px solid rgba(201,169,110,.4); border-radius: 1px;
+    box-shadow: var(--sh-lg);
+    transform: translateY(28px) scale(.98); transition: transform .7s var(--ease);
+  }
+  .oh-gate.open .oh-card { transform: none; }
+  .oh-card-img { position: relative; min-height: 560px; overflow: hidden; }
+  .oh-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; transform: scale(1.06); animation: zoomOut 12s ease forwards; }
+  .oh-card-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(35,34,32,0) 60%, var(--charcoal) 100%), linear-gradient(to top, rgba(35,34,32,.75), transparent 50%); }
+  .oh-card-img .oh-logo { position: absolute; top: 32px; left: 32px; margin: 0; height: 40px; z-index: 1; }
+  .oh-card-when { position: absolute; left: 32px; bottom: 32px; z-index: 1; }
+  .oh-card-when .oh-big { font-family: var(--ff-display); font-size: 132px; font-weight: 300; line-height: .8; color: var(--gold-lt); letter-spacing: -4px; }
+  .oh-card-when .oh-mon { font-family: var(--ff-display); font-style: italic; font-size: 34px; font-weight: 300; color: var(--white); margin-top: 8px; }
+  .oh-card-when .oh-mon small { display: block; font-family: var(--ff-ui); font-style: normal; font-size: 10.5px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-top: 10px; }
+  .oh-card-body { padding: 56px 52px 48px; display: flex; flex-direction: column; justify-content: center; }
+  .oh-card-body .oh-tag { margin-bottom: 22px; }
+  .oh-card-body .oh-title { font-size: clamp(56px, 6vw, 84px); margin-bottom: 10px; }
+  .oh-card-body .oh-sub { margin-bottom: 20px; letter-spacing: 6px; }
+  .oh-card-body .oh-desc { font-size: 15.5px; margin-bottom: 28px; }
+  .oh-mini { display: grid; grid-template-columns: repeat(4,1fr); gap: 4px; margin-bottom: 30px; padding: 16px 0; border-top: 1px solid rgba(201,169,110,.25); border-bottom: 1px solid rgba(201,169,110,.25); }
+  .oh-mini .oh-cell { padding: 4px 0; }
+  .oh-mini .oh-num { font-size: 40px; }
+  .oh-mini .oh-lbl { margin-top: 6px; }
+  .oh-card-body .oh-actions .btn { padding: 15px 28px; }
+  .oh-skip { margin-top: 22px; font-family: var(--ff-ui); font-size: 10.5px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,.45); background: none; border: 0; cursor: pointer; align-self: flex-start; padding: 0; transition: color var(--t-fast); }
+  .oh-skip:hover { color: var(--gold-lt); }
+  .oh-skip::after { content: '  →'; }
+  .oh-gate-x { position: absolute; top: 16px; right: 16px; z-index: 2; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: rgba(35,34,32,.6); border: 1px solid rgba(201,169,110,.35); color: var(--white); cursor: pointer; border-radius: 1px; transition: background var(--t-fast), color var(--t-fast); }
+  .oh-gate-x:hover { background: var(--gold); color: var(--white); }
+  /* ---------- Lembrete flutuante ---------- */
+  .oh-float {
+    position: fixed; left: 24px; bottom: 24px; z-index: 850;
+    display: flex; align-items: center; gap: 14px;
+    background: rgba(35,34,32,.96); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(201,169,110,.4); border-radius: 1px;
+    padding: 12px 14px 12px 16px; color: var(--white);
+    box-shadow: var(--sh-lg);
+    transform: translateY(24px); opacity: 0; pointer-events: none;
+    transition: transform .55s var(--ease), opacity .55s ease;
+  }
+  .oh-float.show { transform: none; opacity: 1; pointer-events: auto; }
+  .oh-float-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); flex: 0 0 auto; animation: ohBlink 2.2s ease infinite; }
+  .oh-float-txt { font-family: var(--ff-ui); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; line-height: 1.5; }
+  .oh-float-txt strong { color: var(--gold-lt); font-weight: 500; }
+  .oh-float-txt span { display: block; color: rgba(255,255,255,.55); font-size: 10px; letter-spacing: 1.5px; }
+  .oh-float-go {
+    font-family: var(--ff-ui); font-size: 10.5px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase;
+    background: var(--gold); color: var(--white); padding: 10px 14px; border-radius: 1px; text-decoration: none; white-space: nowrap;
+    transition: background var(--t-fast);
+  }
+  .oh-float-go:hover { background: var(--gold-dk); }
+  .oh-float-x {
+    background: none; border: 0; color: rgba(255,255,255,.45); cursor: pointer; padding: 6px; line-height: 0;
+    transition: color var(--t-fast);
+  }
+  .oh-float-x:hover { color: var(--white); }
+
+  @media (max-width: 1024px) {
+    .oh-inner { grid-template-columns: 1fr; gap: 48px; }
+    #open-house { padding: 96px 0; }
+  }
+  @media (max-width: 900px) {
+    .oh-card { grid-template-columns: 1fr; }
+    .oh-card-img { min-height: 260px; }
+    .oh-card-when .oh-big { font-size: 88px; }
+    .oh-card-when .oh-mon { font-size: 26px; }
+    .oh-card-body { padding: 36px 28px 32px; }
+    .oh-mini .oh-num { font-size: 32px; }
+  }
+  @media (max-width: 768px) {
+    #open-house { padding: 80px 0; min-height: 0; }
+    .oh-facts { gap: 0 28px; }
+    .oh-count { padding: 32px 22px 28px; }
+    .oh-actions .btn { width: 100%; justify-content: center; }
+    .oh-float { left: 12px; right: 12px; bottom: 88px; padding: 10px 10px 10px 14px; }
+    .oh-float-txt span { display: none; }
+  }
+
+  /* etiqueta do hero → Open House */
+  .hero-tag.oh-hero-tag { text-decoration: none; transition: border-color var(--t-fast), background var(--t-fast); }
+  .hero-tag.oh-hero-tag:hover { border-color: var(--gold); background: rgba(201,169,110,.16); }
+  .hero-tag.oh-hero-tag .hero-tag-dot { animation: ohBlink 2.2s ease infinite; }
+  .hero-tag.oh-hero-tag strong { color: var(--white); font-weight: 500; }
   </style>
 </head>
 <body>
@@ -813,6 +1008,10 @@
         <span class="hero-tag-dot"></span>
         Lisboa · Parada do Alto de São João · 16 Residências
       </div>
+      <a href="#open-house" class="hero-tag oh-hero-tag">
+        <span class="hero-tag-dot"></span>
+        <strong>Open House</strong>&nbsp;· Sábado 17 outubro · 14h – 17h
+      </a>
       <h1 class="hero-title">Elevar a<br>forma de <em>viver.</em></h1>
       <p class="hero-sub">ALTUM São João</p>
       <p class="hero-desc">
@@ -836,6 +1035,124 @@
     Explorar
   </div>
 </section>
+
+<!-- ===== OPEN HOUSE ===== -->
+<section id="open-house" aria-label="Open House ALTUM São João, 17 de outubro, das 14h às 17h">
+  <div class="oh-bg">
+    <img src="https://static.wixstatic.com/media/5152f0_b55f31b068154a7588471f530a968719~mv2.png/v1/fit/w_1200,h_1500,q_90,enc_avif,quality_auto/5152f0_b55f31b068154a7588471f530a968719~mv2.png"
+         alt="Fachada ALTUM São João" loading="lazy">
+  </div>
+  <div class="oh-overlay"></div>
+  <div class="oh-line"></div>
+
+  <div class="wrap">
+    <div class="oh-inner">
+
+      <div class="rl">
+        <img class="oh-logo"
+             src="https://static.wixstatic.com/media/5152f0_3a0d7c10d54b4a8ba9d6ef7880495303~mv2.png/v1/crop/x_12,y_109,w_1007,h_420/fill/w_350,h_146,al_c,q_85,enc_avif,quality_auto/Logo%20de%20luxo%20Altum%20S%C3%A3o%20Jo%C3%A3o_edited.png"
+             alt="ALTUM São João">
+        <div class="oh-tag"><span class="oh-tag-dot"></span>Evento exclusivo · Entrada livre</div>
+        <h2 class="oh-title">Open<br><em>House.</em></h2>
+        <p class="oh-sub">Sábado · 17 outubro</p>
+        <p class="oh-desc">
+          Uma tarde para conhecer o ALTUM por dentro. Visite as residências T1 e T2,
+          suba ao pátio interior e fale com a equipa, sem marcação prévia.
+        </p>
+
+        <div class="oh-facts">
+          <div class="oh-fact">
+            <span class="oh-fact-k">Horário</span>
+            <span class="oh-fact-v">14h – 17h</span>
+          </div>
+          <div class="oh-fact">
+            <span class="oh-fact-k">Morada</span>
+            <span class="oh-fact-v">Alto de São João<small>Parada do Alto de São João nº 8, Lisboa</small></span>
+          </div>
+        </div>
+
+        <div class="oh-actions">
+          <a class="btn btn-wa"
+             href="https://wa.me/351918576445?text=Ol%C3%A1%21%20Gostaria%20de%20confirmar%20a%20minha%20presen%C3%A7a%20no%20Open%20House%20do%20ALTUM%20S%C3%A3o%20Jo%C3%A3o%2C%20no%20dia%2017%20de%20outubro%2C%20entre%20as%2014h%20e%20as%2017h."
+             target="_blank" rel="noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 1-13.3 7.9L3 21l1.1-4.7A9 9 0 1 1 21 12z"/><path d="M9 10a1 1 0 0 0 1 1h.5a6 6 0 0 0 2.5 2.5V14a1 1 0 0 0 1 1l1.5-.5-1-1.5-1 .3a4.5 4.5 0 0 1-1.8-1.8l.3-1-1.5-1L9 10z"/></svg>
+            Confirmar via WhatsApp
+          </a>
+          <button type="button" class="btn btn-outline-light" id="oh-ics">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Adicionar ao calendário
+          </button>
+        </div>
+      </div>
+
+      <div class="rr">
+        <div class="oh-count" id="oh-count">
+          <div class="oh-count-k">Faltam</div>
+          <div class="oh-grid" aria-live="off">
+            <div class="oh-cell"><div class="oh-num" data-u="d">00</div><div class="oh-lbl">Dias</div></div>
+            <div class="oh-cell"><div class="oh-num" data-u="h">00</div><div class="oh-lbl">Horas</div></div>
+            <div class="oh-cell"><div class="oh-num" data-u="m">00</div><div class="oh-lbl">Min</div></div>
+            <div class="oh-cell"><div class="oh-num" data-u="s">00</div><div class="oh-lbl">Seg</div></div>
+          </div>
+          <div class="oh-live" id="oh-live">Estamos <em>de portas abertas.</em></div>
+          <div class="oh-count-foot">
+            Dúvidas? <a href="tel:+351918576445">+351 918 576 445</a> ·
+            <a href="mailto:cf@np-i.pt?subject=Open%20House%20-%20ALTUM%20S%C3%A3o%20Jo%C3%A3o">cf@np-i.pt</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Convite de entrada -->
+<div class="oh-gate" id="oh-gate" role="dialog" aria-modal="true" aria-labelledby="oh-gate-title">
+  <div class="oh-card">
+    <button type="button" class="oh-gate-x" id="oh-gate-x" aria-label="Fechar">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="oh-card-img">
+      <img src="https://static.wixstatic.com/media/5152f0_b55f31b068154a7588471f530a968719~mv2.png/v1/fit/w_1200,h_1500,q_90,enc_avif,quality_auto/5152f0_b55f31b068154a7588471f530a968719~mv2.png" alt="Fachada ALTUM São João">
+      <img class="oh-logo" src="https://static.wixstatic.com/media/5152f0_3a0d7c10d54b4a8ba9d6ef7880495303~mv2.png/v1/crop/x_12,y_109,w_1007,h_420/fill/w_350,h_146,al_c,q_85,enc_avif,quality_auto/Logo%20de%20luxo%20Altum%20S%C3%A3o%20Jo%C3%A3o_edited.png" alt="ALTUM São João">
+      <div class="oh-card-when">
+        <div class="oh-big">17</div>
+        <div class="oh-mon">outubro<small>Sábado · 14h – 17h</small></div>
+      </div>
+    </div>
+    <div class="oh-card-body">
+      <div class="oh-tag"><span class="oh-tag-dot"></span>Está convidado</div>
+      <h2 class="oh-title" id="oh-gate-title">Open<br><em>House.</em></h2>
+      <p class="oh-sub">ALTUM São João</p>
+      <p class="oh-desc">Uma tarde para conhecer o ALTUM por dentro: residências T1 e T2, pátio interior e a equipa à sua espera. Entrada livre, sem marcação.</p>
+      <div class="oh-mini" id="oh-mini">
+        <div class="oh-cell"><div class="oh-num" data-u="d">00</div><div class="oh-lbl">Dias</div></div>
+        <div class="oh-cell"><div class="oh-num" data-u="h">00</div><div class="oh-lbl">Horas</div></div>
+        <div class="oh-cell"><div class="oh-num" data-u="m">00</div><div class="oh-lbl">Min</div></div>
+        <div class="oh-cell"><div class="oh-num" data-u="s">00</div><div class="oh-lbl">Seg</div></div>
+      </div>
+      <div class="oh-actions">
+        <a class="btn btn-wa" href="https://wa.me/351918576445?text=Ol%C3%A1%21%20Gostaria%20de%20confirmar%20a%20minha%20presen%C3%A7a%20no%20Open%20House%20do%20ALTUM%20S%C3%A3o%20Jo%C3%A3o%2C%20no%20dia%2017%20de%20outubro%2C%20entre%20as%2014h%20e%20as%2017h." target="_blank" rel="noopener">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 1-13.3 7.9L3 21l1.1-4.7A9 9 0 1 1 21 12z"/><path d="M9 10a1 1 0 0 0 1 1h.5a6 6 0 0 0 2.5 2.5V14a1 1 0 0 0 1 1l1.5-.5-1-1.5-1 .3a4.5 4.5 0 0 1-1.8-1.8l.3-1-1.5-1L9 10z"/></svg>
+          Confirmar via WhatsApp
+        </a>
+        <a class="btn btn-outline-light" href="#open-house" id="oh-gate-more">Ver detalhes</a>
+      </div>
+      <button type="button" class="oh-skip" id="oh-gate-skip">Continuar para o site</button>
+    </div>
+  </div>
+</div>
+
+<!-- Lembrete flutuante (pode ficar logo a seguir à secção) -->
+<div class="oh-float" id="oh-float" role="status">
+  <span class="oh-float-dot"></span>
+  <div class="oh-float-txt"><strong>Open House</strong> · 17 out<span>14h – 17h · Entrada livre</span></div>
+  <a class="oh-float-go" href="#open-house">Saber mais</a>
+  <button type="button" class="oh-float-x" id="oh-float-x" aria-label="Fechar lembrete">
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+</div>
+
 
 <!-- =============================================
      BAND / NÚMEROS
@@ -1617,6 +1934,116 @@
     ['fn','ft','fe','fm'].forEach(id => document.getElementById(id).value = '');
     document.getElementById('fti').value = '';
   }
+</script>
+<!-- ===== OPEN HOUSE (banner) ===== -->
+<script>
+(function () {
+  // Evento (hora de Lisboa, UTC+1 em outubro)
+  var START = new Date('2026-10-17T14:00:00+01:00');
+  var END   = new Date('2026-10-17T17:00:00+01:00');
+
+  // ── Contagem decrescente ───────────────────────────────
+  var box = document.getElementById('oh-count');
+  var nums = {};
+  var mini = document.getElementById('oh-mini');
+  document.querySelectorAll('#oh-count .oh-num, #oh-mini .oh-num').forEach(function (n) {
+    (nums[n.dataset.u] = nums[n.dataset.u] || []).push(n);
+  });
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function set(els, v) {
+    var t = pad(v);
+    els.forEach(function (el) {
+      if (el.textContent !== t) {
+        el.classList.add('tick');
+        setTimeout(function () { el.textContent = t; el.classList.remove('tick'); }, 120);
+      }
+    });
+  }
+  function tick() {
+    var now = new Date();
+    if (now >= START && now <= END) { box.classList.add('live'); if (mini) mini.style.display = 'none'; return; }
+    if (now > END) {
+      box.classList.add('live');
+      document.getElementById('oh-live').innerHTML = 'Obrigado a todos <em>os que nos visitaram.</em>';
+      if (mini) mini.style.display = 'none';
+      return;
+    }
+    var diff = Math.max(0, START - now) / 1000;
+    set(nums.d, Math.floor(diff / 86400));
+    set(nums.h, Math.floor(diff % 86400 / 3600));
+    set(nums.m, Math.floor(diff % 3600 / 60));
+    set(nums.s, Math.floor(diff % 60));
+  }
+  tick(); setInterval(tick, 1000);
+
+  // ── Adicionar ao calendário (.ics) ─────────────────────
+  document.getElementById('oh-ics').addEventListener('click', function () {
+    var ics = [
+      'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//ALTUM Sao Joao//Open House//PT',
+      'BEGIN:VEVENT',
+      'UID:openhouse-20261017@altum.pt',
+      'DTSTAMP:' + new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d+/, ''),
+      'DTSTART:20261017T130000Z',
+      'DTEND:20261017T160000Z',
+      'SUMMARY:Open House ALTUM São João',
+      'LOCATION:Parada do Alto de São João nº 8\\, Lisboa',
+      'DESCRIPTION:Visita livre às residências T1 e T2. Confirmações: +351 918 576 445 · cf@np-i.pt',
+      'URL:https://www.altum.pt/#open-house',
+      'END:VEVENT', 'END:VCALENDAR'
+    ].join('\r\n');
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([ics], { type: 'text/calendar;charset=utf-8' }));
+    a.download = 'open-house-altum.ics';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  });
+
+  // ── Convite de entrada ─────────────────────────────────
+  var gate = document.getElementById('oh-gate');
+  var seen = false;
+  try { seen = sessionStorage.getItem('oh-gate') === '1'; } catch (e) {}
+  function closeGate() {
+    gate.classList.remove('open');
+    document.body.style.overflow = '';
+    try { sessionStorage.setItem('oh-gate', '1'); } catch (e) {}
+  }
+  if (!seen && new Date() <= END) {
+    setTimeout(function () { gate.classList.add('open'); document.body.style.overflow = 'hidden'; }, 900);
+  }
+  document.getElementById('oh-gate-x').addEventListener('click', closeGate);
+  document.getElementById('oh-gate-skip').addEventListener('click', closeGate);
+  document.getElementById('oh-gate-more').addEventListener('click', function () { closeGate(); });
+  gate.addEventListener('click', function (e) { if (e.target === gate) closeGate(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && gate.classList.contains('open')) closeGate(); });
+
+  // ── Lembrete flutuante ─────────────────────────────────
+  var fl = document.getElementById('oh-float');
+  var dismissed = false;
+  try { dismissed = sessionStorage.getItem('oh-float') === '1'; } catch (e) {}
+  if (new Date() > END) dismissed = true;
+  var section = document.getElementById('open-house');
+  var hero = document.getElementById('hero');
+  function update() {
+    if (dismissed) { fl.classList.remove('show'); return; }
+    var pastHero = hero ? window.scrollY > hero.offsetHeight * 0.6 : window.scrollY > 400;
+    var r = section.getBoundingClientRect();
+    var onSection = r.top < window.innerHeight * 0.7 && r.bottom > window.innerHeight * 0.3;
+    fl.classList.toggle('show', pastHero && !onSection);
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+  document.getElementById('oh-float-x').addEventListener('click', function () {
+    dismissed = true; update();
+    try { sessionStorage.setItem('oh-float', '1'); } catch (e) {}
+  });
+
+  // Reveal próprio, caso o observer do site corra antes de esta secção existir
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) e.target.classList.add('on'); });
+    }, { threshold: 0.1 });
+    section.querySelectorAll('.rl, .rr').forEach(function (el) { io.observe(el); });
+  }
+})();
 </script>
 </body>
 </html>
